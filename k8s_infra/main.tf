@@ -1,19 +1,19 @@
 module "master1" {
-  source = "./modules/worker_node"
+  source = "./modules/node"
   cpu = 4
   mem = 4096
   name = "master1"
 }
 
 module "worker1" {
-  source = "./modules/worker_node"
+  source = "./modules/node"
   cpu = 2
   mem = 2048
   name = "worker1"
 }
 
 module "worker2" {
-  source = "./modules/worker_node"
+  source = "./modules/node"
   cpu = 2
   mem = 2048
   name = "worker2"
