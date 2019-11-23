@@ -1,0 +1,56 @@
+---
+- name: creating subdirectory for terraform provider
+  file:
+    path: "{{ item }}"
+    mode: 0700
+    recurse: yes
+    owner: "{{ ansible_user_id }}"
+  with_items:
+    - "{{ ansible_user_dir }}/.terraform.d/plugins/"
+    - "{{ ansible_user_dir }}/bin/"
+
+- name: creating temporary file dir
+  file:
+    path: "{{ role_path }}/files/"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    mode: 0700
+
+- name: Download terraform with check (sha256) and terraform-provider-libvirt
+  get_url:
+    url: "{{ item.src }}"
+    dest: "{{ item.dst }}"
+    checksum: "{{ item.cks }}"
+    owner: "{{ ansible_user_id }}" 
+    mode: 0600
+  with_items:
+    - { src: "{{ roleVarTerraformDownload }}", dst: "{{ role_path }}/files/{{ roleVarTerraformDownload | basename }}", cks: "{{ roleVarTerraformDownloadChecksum }}" }
+    - { src: "{{ roleVarTerraformProviderLibvirtDownload }}", dst: "{{ role_path }}/files/{{ roleVarTerraformProviderLibvirtDownload | basename }}", cks: "{{ roleVarTerraformProviderLibvirtDownloadChecksum }}" }
+
+- name: Extract terraform and terraform-provider-libvirt
+  unarchive:
+    src: "{{ item.src }}"
+    dest: "{{ item.dst }}"
+    mode: 0700
+    owner: "{{ ansible_user_id }}"
+  with_items:
+    - { src: "{{ role_path }}/files/{{ roleVarTerraformDownload | basename }}", dst: "{{ ansible_user_dir }}/bin/" }
+    - { src: "{{ role_path }}/files/{{ roleVarTerraformProviderLibvirtDownload | basename }}", dst: "{{ ansible_user_dir }}/.terraform.d/plugins/" }
+
+- name: deleting zipfile of terraform and terraform-provider-libvirt
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ role_path }}/files/{{ roleVarTerraformDownload | basename }}"
+    - "{{ role_path }}/files/{{ roleVarTerraformProviderLibvirtDownload | basename }}"
+
+- name: download kubespray
+  git:
+    repo: 'https://github.com/kubernetes-sigs/kubespray.git'
+    dest: "{{ ansible_user_dir }}/workspace/DevOpsCon2019/kubespray"
+    version: release-2.11
+    depth: 1
+  tags:
+    - get_kubespray
+...
