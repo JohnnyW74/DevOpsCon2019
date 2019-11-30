@@ -53,4 +53,26 @@
     depth: 1
   tags:
     - get_kubespray
+
+- name: install needed pip modules for kubespray
+  pip:
+    name: 
+      - jinja2
+      - bottle
+      - netaddr
+      - pbr
+      - hvac
+      - jmespath
+    extra_args: --user
+  tags:
+    - pip_modules
+
+- name: add user to group docker
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: yes
+  become: yes
+  tags:
+    - user
 ...

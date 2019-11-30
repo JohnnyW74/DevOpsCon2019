@@ -1,0 +1,6 @@
+---
+- hosts: all
+  roles:
+    - get_kube_config
+...
+

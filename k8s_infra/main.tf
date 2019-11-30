@@ -1,24 +1,24 @@
-module "master1" {
-  source = "./modules/node"
-  cpu = 4
-  mem = 4096
-  name = "master1"
-}
-
-module "worker1" {
+module "node1" {
   source = "./modules/node"
   cpu = 2
-  mem = 2048
-  name = "worker1"
+  mem = 3072
+  name = "node1"
 }
 
-module "worker2" {
+module "node2" {
   source = "./modules/node"
   cpu = 2
-  mem = 2048
-  name = "worker2"
+  mem = 3072
+  name = "node2"
+}
+
+module "node3" {
+  source = "./modules/node"
+  cpu = 2
+  mem = 3072
+  name = "node3"
 }
 
 output "child_ip" {
-  value = "\n            ${module.master1.ip}:\n            ${module.worker1.ip}:\n            ${module.worker2.ip}:"
+  value = "\ndeclare -a IPS=(${module.node1.ip} ${module.node2.ip} ${module.node3.ip})"
 }

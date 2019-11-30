@@ -1,0 +1,8 @@
+---
+- name: download kube config
+  fetch:
+    src: ~/.kube/config
+    dest: ~/.kube/config
+    flat: yes
+  when: "'kube-master' in group_names"
+...

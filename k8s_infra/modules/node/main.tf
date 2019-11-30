@@ -14,7 +14,7 @@ resource "libvirt_volume" "os_default" {
 
 resource "libvirt_volume" "disk_default" {
   name           = "disk_${var.name}"
-  base_volume_id = "${libvirt_volume.os_default.id}"
+  base_volume_id = libvirt_volume.os_default.id
   pool           = "default"
   size           = 10000000000
 }
@@ -40,10 +40,10 @@ EOF
 
 resource "libvirt_domain" "node_default" {
   name   = "node_${var.name}"
-  memory = "${var.mem}"
-  vcpu   = "${var.cpu}"
+  memory = var.mem
+  vcpu   = var.cpu
 
-  cloudinit = "${libvirt_cloudinit_disk.cloudinit_default.id}"
+  cloudinit = libvirt_cloudinit_disk.cloudinit_default.id
 
   network_interface {
     network_name   = "default"
@@ -66,7 +66,7 @@ resource "libvirt_domain" "node_default" {
   }
 
   disk {
-    volume_id = "${libvirt_volume.disk_default.id}"
+    volume_id = libvirt_volume.disk_default.id
   }
 
   graphics {
