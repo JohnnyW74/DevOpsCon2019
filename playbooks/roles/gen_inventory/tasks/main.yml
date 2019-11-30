@@ -1,0 +1,6 @@
+---
+- name: gen template for inventory
+  template:
+    src: inventory.ini.j2
+    dest: "{{ ansible_user_dir }}/workspace/DevOpsCon2019/kubespray/inventory/mycluster/inventory.ini"
+...
