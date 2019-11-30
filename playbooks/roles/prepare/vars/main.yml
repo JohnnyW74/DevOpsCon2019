@@ -3,4 +3,6 @@ roleVarTerraformDownload: https://releases.hashicorp.com/terraform/0.12.16/terra
 roleVarTerraformDownloadChecksum: sha256:fcc719314660adc66cbd688918d13baa1095301e2e507f9ac92c9e22acf4cc02
 roleVarTerraformProviderLibvirtDownload: https://github.com/dmacvicar/terraform-provider-libvirt/releases/download/v0.6.0/terraform-provider-libvirt-0.6.0+git.1569597268.1c8597df.Ubuntu_18.04.amd64.tar.gz
 roleVarTerraformProviderLibvirtDownloadChecksum: sha256:48636038bc49f47cbbeca84196e34ca75b2b79ef672102f4720b1219426141b7
+roleVarItsioDownload: https://github.com/istio/istio/releases/download/1.4.0/istio-1.4.0-linux.tar.gz
+roleVarItsioDownloadChecksum: sha256:f6d76c16a1b8367db01477f425394d3799766301a144024f0b6be3c5bb65cd57
 ...
