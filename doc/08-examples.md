@@ -1,22 +1,7 @@
 Beispiele
 ===
 
-curl -L https://istio.io/downloadIstio | sh -
-cd istio-1.4.0
-bin/istioctl manifest apply --set profile=demo
-
-
-kubectl get svc -n istio-system
-
-kubectl delete namespaces istio-system
-bin/istioctl manifest apply --set profile=demo | kubectl delete -f -
-
-kubectl label namespace default istio-injection=enabled
-
-export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
-export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
-
+```
 kubectl apply -f samples/httpbin/httpbin.yaml
 
 kubectl apply -f - <<EOF
@@ -55,6 +40,11 @@ spec:
         host: httpbin
 EOF
 
+kubectl get gateway --all-namespaces
+```
 
+Browse [http://192.168.122.240/headers](http://192.168.122.240/headers)
+
+> https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/
 
 [zurück](https://github.com/JohnnyW74/DevOpsCon2019/blob/master/doc/07-istio.md) [weiter](https://github.com/JohnnyW74/DevOpsCon2019/blob/master/doc/09-qa.md)
