@@ -1,4 +1,10 @@
 ---
+- name: Copy file with owner and permission, using symbolic representation
+  copy:
+    src: "{{ ansible_user_dir }}/workspace/DevOpsCon2019/kubespray/inventory/sample/"
+    dest: "{{ ansible_user_dir }}/workspace/DevOpsCon2019/kubespray/inventory/mycluster"
+    owner: "{{ ansible_user_id }}"
+
 - name: gen template for inventory
   template:
     src: inventory.ini.j2

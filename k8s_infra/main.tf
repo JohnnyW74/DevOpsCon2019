@@ -20,5 +20,5 @@ module "node3" {
 }
 
 output "child_ip" {
-  value = "\ndeclare -a IPS=(${module.node1.ip} ${module.node2.ip} ${module.node3.ip})"
+  value = "\nansible-playbook -i ../playbooks/hosts --extra-vars='{\"extra_var_node_list\": [${module.node1.ip},${module.node2.ip},${module.node3.ip}]}' ../playbooks/gen_inventory.yml"
 }
