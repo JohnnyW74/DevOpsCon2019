@@ -47,7 +47,7 @@
 - name: copy public key to terraform module
   copy:
     src: "{{ ansible_user_dir }}/.ssh/id_rsa.pub"
-    dest: "{{ ansible_user_dir }}/workspace/DevOpsCon2019/k8_infra/modules/node/"
+    dest: "{{ ansible_user_dir }}/workspace/DevOpsCon2019/k8s_infra/modules/node/"
     mode: 0700
     owner: "{{ ansible_user_id }}"
 
