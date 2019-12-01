@@ -7,4 +7,5 @@ roleVarItsioDownload: https://github.com/istio/istio/releases/download/1.4.0/ist
 roleVarItsioDownloadChecksum: sha256:f6d76c16a1b8367db01477f425394d3799766301a144024f0b6be3c5bb65cd57
 roleVarUbuntuDownload: https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img
 roleVarUbuntuDownloadChecksum: sha256:5993b532e36035d726a0fd4cc76ab9bccebc6a088bd361b0b37889c5a9a2a021
+roleVarMetalLBDownload: https://raw.githubusercontent.com/google/metallb/v0.8.3/manifests/metallb.yaml
 ...
