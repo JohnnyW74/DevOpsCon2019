@@ -30,6 +30,7 @@
     - { src: "{{ roleVarTerraformDownload }}", dst: "{{ role_path }}/files/{{ roleVarTerraformDownload | basename }}", cks: "{{ roleVarTerraformDownloadChecksum }}" }
     - { src: "{{ roleVarTerraformProviderLibvirtDownload }}", dst: "{{ role_path }}/files/{{ roleVarTerraformProviderLibvirtDownload | basename }}", cks: "{{ roleVarTerraformProviderLibvirtDownloadChecksum }}" }
     - { src: "{{ roleVarItsioDownload }}", dst: "{{ role_path }}/files/{{ roleVarItsioDownload | basename }}", cks: "{{ roleVarItsioDownloadChecksum }}" }
+    - { src: "{{ roleVarUbuntuDownload }}", dst: "{{ role_path }}/files/{{ roleVarUbuntuDownload | basename }}", cks: "{{ roleVarUbuntuDownloadChecksum }}" }
 
 - name: Extract terraform and terraform-provider-libvirt
   unarchive:
