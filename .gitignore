@@ -4,3 +4,4 @@
 playbooks/roles/prepare/files/*
 kubespray/*
 metallb/metallb.yaml
+k8_infra/modules/node/id_rsa.pub
