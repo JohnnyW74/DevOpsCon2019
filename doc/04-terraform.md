@@ -1,8 +1,9 @@
 Terraform
 ===
 
+Projekt: [https://www.terraform.io/](https://www.terraform.io/docs/index.html)
+
 ```
-cd ../k8s_infra
 terraform init
 terraform apply
 ```

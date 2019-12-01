@@ -9,7 +9,7 @@ variable "name" {}
 resource "libvirt_volume" "os_default" {
   name   = "os_${var.name}"
   pool   = "default"
-  source = "/home/swalker/workspace/DevOpsCon2019/playbooks/roles/prepare/files/ubuntu-18.04-server-cloudimg-amd64.img"
+  source = "/home/swalker/workspace/DevOpsCon2019/playbooks/roles/prepare/files/bionic-server-cloudimg-amd64.img"
 }
 
 resource "libvirt_volume" "disk_default" {

@@ -2,3 +2,5 @@
 *.tfstate.backup
 .terraform
 playbooks/roles/prepare/files/*
+kubespray/*
+metallb/metallb.yaml
